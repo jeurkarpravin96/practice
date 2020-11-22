@@ -1,3 +1,7 @@
 i am pravin
 i am rohan
+this is line third//////
 i am anjali....
+=======
+i am rahul
+>>>>>>> 78c3acd2d97fa988b05637ee143584ab7ffb83a7
