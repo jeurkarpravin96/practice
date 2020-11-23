@@ -1,0 +1,86 @@
+----how to deploy project on ec2 ubuntu instance-----------------
+
+1)=====create a instance=====
+-choose free tier ubuntu instance
+-take harkdisk size 30 gb
+-select ip protocals
+http 80
+mysql 3306
+tcpip 8080
+
+-create key
+-make a new folder in desktop
+-download key in new folder
+done
+2)======make elastic ip(optional)====
+-goto elastic ips in left newbar
+-open elastic ip
+-click on Allocate Elastic IP address
+-click om Allocate
+-select elastic ip and click on Actions dropdown button
+-select associate ip address
+-choose running instance
+-select ip in private IP address
+-click on Associate
+Done
+
+3)=======open ubuntu instance in cmd=======
+-select ec2 instance and select connect
+-now goto ssh client
+-copy the link written in example
+-go to cmd type ssh -i and paste the link
+-now ubuntu has started 
+-now install java cammand-
+sudo apt install default-jdk
+sudo apt install default-jre
+
+***if not working***
+
+sudo apt update
+sudo su
+sudo apt install default-jdk
+ sudo apt install default-jre
+4==========install tomcat=========
+- wget https://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.40/bin/apache-tomcat-9.0.40.tar.gz
+
+-export tomcat folder-
+tar -xf apache-tomcat-9.0.40.tar.gz
+
+5======Application war file======
+paste war file in the folder where pem file is present go to cmd
+and cammnd-
+-i (key name) (war file name) (url mentioned after pem in name in example):/ubuntu(folder where tomcat is present)
+
+6====go to apache-tomcat-9.0.40/conf====
+-open  tomcat-users.xml
+vi  tomcat-users.xml
+<role rolename="manager-gui"/>
+<user username="admin" password="admin" roles="manager-gui"/>
+
+copy paste it in tomcat-users.xml before last tag
+
+save
+
+7=====go to apache-tomcat-9.0.40/webapps/manager/METAINF/context.xml=====
+vi context.xml
+comment---
+cookies till valve -->
+save
+
+8=======go to apache-tomcat-9.0.40=======
+-cd bin
+./startup.sh
+
+will start tomcat
+
+9 =========go to instance===========in aws console
+copy ip address
+type in new window in browser
+http://(ip address):8080
+topcat window will open
+
+10=========go to manager open your app
+done:-)
+
+
+
